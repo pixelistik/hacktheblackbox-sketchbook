@@ -10,9 +10,10 @@ bool SERIAL_DEBUG_PRINT = true;
 // Keyboard report buffer
 uint8_t buf[8] = { 0 };
 
-int pins[] = {    2,    3,    4,    5,    6,    7,    8,    9,   10,   11,   12 };
-int keys[] = { 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0B, 0x0D, 0x12, 0x14, 0x17 };
-//                a     b     c     d     e     f     h     j     o     q     t
+int pins[] = {    2,    3,    4,    5,    6,    7,    8,    9,   10,   11,   12,   13,   A0,   A1,   A2,   A3,   A4,   A5 };
+int keys[] = { 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0B, 0x0D, 0x12, 0x14, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E };
+//                a     b     c     d     e     f     h     j     o     q     t     u     v,    w,    x,    y,    z,    1
+// See http://www.freebsddiary.org/APC/usb_hid_usages.php for USB Keyboard codes
 
 const int pinCount = sizeof(pins) / sizeof(int);
 

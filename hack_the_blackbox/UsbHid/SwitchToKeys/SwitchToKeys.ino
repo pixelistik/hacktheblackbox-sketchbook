@@ -5,6 +5,8 @@
  * firmware, see http://mitchtech.net/arduino-usb-hid-keyboard/
  */
 
+bool SERIAL_DEBUG_PRINT = false;
+
 // Keyboard report buffer
 uint8_t buf[8] = { 0 };
 
@@ -43,13 +45,24 @@ void setup()
   delay(200);
 }
 
+void pressKey(int key) {
+	if (SERIAL_DEBUG_PRINT) {
+		Serial.println(key);
+	} else {
+		buf[2] = key;
+		Serial.write(buf, 8);
+	}
+}
+
 void releaseKey()
 {
-	buf[0] = 0;
-	buf[2] = 0;
+	if(!SERIAL_DEBUG_PRINT) {
+		buf[0] = 0;
+		buf[2] = 0;
 
-	// Release key
-	Serial.write(buf, 8);
+		// Release key
+		Serial.write(buf, 8);
+	}
 }
 
 void loop()
@@ -59,13 +72,7 @@ void loop()
 		pinState = digitalRead(i);
 
 		if (pinStatePrevious[i] == 1 && pinState == 0) {
-			buf[2] = keyMap[i];
-
-			// Serial.println(keyMap[i]);
-
-			// Send keypress
-			Serial.write(buf, 8);
-
+			pressKey(keyMap[i]);
 		}
 
 		if (pinStatePrevious[i] == 0 && pinState == 1) {

@@ -34,8 +34,7 @@ int pinState;
 
 int pinStatePrevious[HIGHEST_PIN + 1];
 
-void setup()
-{
+void setup() {
   Serial.begin(9600);
 
   for(int i = LOWEST_PIN; i <= HIGHEST_PIN; i++) {
@@ -54,8 +53,7 @@ void pressKey(int key) {
 	}
 }
 
-void releaseKey()
-{
+void releaseKey() {
 	if(!SERIAL_DEBUG_PRINT) {
 		buf[0] = 0;
 		buf[2] = 0;
@@ -65,8 +63,7 @@ void releaseKey()
 	}
 }
 
-void loop()
-{
+void loop() {
 
 	for(int i = LOWEST_PIN; i <= HIGHEST_PIN; i++) {
 		pinState = digitalRead(i);

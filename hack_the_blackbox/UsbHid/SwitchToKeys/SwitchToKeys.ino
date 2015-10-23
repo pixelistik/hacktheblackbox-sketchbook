@@ -5,7 +5,7 @@
  * firmware, see http://mitchtech.net/arduino-usb-hid-keyboard/
  */
 
-bool SERIAL_DEBUG_PRINT = true;
+bool SERIAL_DEBUG_PRINT = false;
 
 // Keyboard report buffer
 uint8_t buf[8] = { 0 };
